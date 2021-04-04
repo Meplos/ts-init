@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mkdir "$1"
+cd "$1"
+git init
+npm i --save-dev typescript 
+echo "{\"compilerOptions\": {\"target\": \"es2020\", \"module\": \"es2020\", \"sourceMap\": true, \"outDir\": \"dist/\", \"strict\": true, \"esModuleInterop\": true,\"skipLibCheck\": true, \"forceConsistentCasingInFileNames\": true } }" > tsconfig.json
+npx tsc
+mkdir src/ dist/
+touch src/index.ts
+npm init
+echo "Add  \"compile\": \"tsc --watch src/* --outDir dist/  \","
+echo "And \"dev\": \"nodemon dist/index.js\","
+echo "To your script field in your package .json"
